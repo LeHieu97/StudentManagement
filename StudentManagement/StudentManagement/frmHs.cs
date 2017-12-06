@@ -27,8 +27,6 @@ namespace TESTING_PROJECT
         {
             try
             {
-
-
                 con.Open();
                 cmd = new SqlCommand("SELECT HS1.MALOP from HS1", con);
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -51,48 +49,7 @@ namespace TESTING_PROJECT
         
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if(btnThem.Text=="Thêm")
-            {
-                btnThem.Text ="Save"; txtMaHS.Enabled = true;
-               
-
-            }
-            else if (btnThem.Text == "Save")
-
-            {
-                btnThem.Text = "Thêm";txtMaHS.Enabled = false;
-                try
-                {
-                    if(checkMaHs(txtMaHS.Text))
-                    {
-                        con.Open();
-                        cmd = new SqlCommand("INSERT INTO HS1(IDHOCSINH, HOLOT, TENHS, MALOP) VALUES(@id, @ho, @ten, @malop)", con);
-
-                        cmd.Parameters.Add(new SqlParameter("@id", Int32.Parse(txtMaHS.Text.ToString())));
-                        cmd.Parameters.Add(new SqlParameter("@ho", txtHoLot.Text));
-                        cmd.Parameters.Add(new SqlParameter("@ten", txtTen.Text));
-                        cmd.Parameters.Add(new SqlParameter("@malop", comboBoxLop.Text));
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("OKE ", "Thông Báo", MessageBoxButtons.OK);
-                        con.Close();
-                        loadDanhSach("SELECT *FROM HS1");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Đầu Vào K Hợp Lệ ", "Thông Báo",MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    }
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("Lỗi ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    MessageBox.Show(ex.Message);
-
-                }
-            }
-           
-            con.Close();
-
+          
 
         }
 
@@ -100,7 +57,7 @@ namespace TESTING_PROJECT
         {
             loadDanhSach("SELECT *FROM HS1");
             laodCompo();
-            txtMaHS.Enabled = false;
+          
         }
         public void loadDanhSach(String selectHocSinh)
         {
@@ -110,6 +67,8 @@ namespace TESTING_PROJECT
             sda.Fill(dt);
             dataGridViewDanhSach.DataSource = dt;
             con.Close();
+            this.dataGridViewDanhSach.RowsDefaultCellStyle.BackColor = Color.Bisque;
+            this.dataGridViewDanhSach.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
         }
         
         public Boolean checkMaHs(String ma)
@@ -161,21 +120,130 @@ namespace TESTING_PROJECT
 
         }
 
-        private void btnXoa_Click(object sender, EventArgs e)
+
+        public SqlConnection cn = new SqlConnection();
+        public void Ketnoi()
+        {
+            try
+            {
+                if (cn.State == 0)
+                {
+                    cn.ConnectionString = @"Data Source=ASUS-AS;Initial Catalog=D:\studentmanagement\quanlyhocsinh.mdf;Integrated Security=True";
+                    cn.Open();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public DataTable XemDL(string sql)
+        {
+            Ketnoi();
+
+            SqlDataAdapter adap = new SqlDataAdapter(sql, cn);
+            DataTable dt = new DataTable();
+            adap.Fill(dt);
+
+            return dt;
+
+            //Ngatketnoi();
+        }
+
+
+        private void btnAddStudent_Click(object sender, EventArgs e)
+        {
+            {
+                
+                try
+                {
+                    if (checkMaHs(txtMaHS.Text))
+                    {
+                        con.Open();
+                        cmd = new SqlCommand("INSERT INTO HS1(IDHOCSINH, HOLOT, TENHS, MALOP) VALUES(@id, @ho, @ten, @malop)", con);
+
+                        cmd.Parameters.Add(new SqlParameter("@id", Int32.Parse(txtMaHS.Text.ToString())));
+                        cmd.Parameters.Add(new SqlParameter("@ho", txtHoLot.Text));
+                        cmd.Parameters.Add(new SqlParameter("@ten", txtTen.Text));
+                        cmd.Parameters.Add(new SqlParameter("@malop", comboBoxLop.Text));
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("OKE ", "Thông Báo", MessageBoxButtons.OK);
+                        con.Close();
+                        loadDanhSach("SELECT *FROM HS1");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Đầu Vào K Hợp Lệ ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Lỗi ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message);
+
+                }
+            }
+
+            con.Close();
+
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+         
+            {
+                btnUpdate.Text = "Edit";
+                try
+                {
+                    // if (checkMaHs(txtMaHS.Text) && checkTenHoHs(txtHoLot.Text) && checkTenHs(txtTen.Text))
+                    //{
+                    con.Open();
+                    cmd = new SqlCommand(" Update HS1 Set HOLOT = @HO, TENHS = @TEN,MALOP=@MALOP Where IDHOCSINH =@maHS", con);
+                    cmd.Parameters.Add(new SqlParameter("@id", txtMaHS.Text));
+
+                    cmd.Parameters.Add(new SqlParameter("@HO", txtHoLot.Text));
+                    cmd.Parameters.Add(new SqlParameter("@TEN", txtTen.Text));
+                    cmd.Parameters.Add(new SqlParameter("@MALOP", comboBoxLop.Text));
+                    cmd.Parameters.Add(new SqlParameter("@maHS", txtMaHS.Text));
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("update  Thành Công", "Thông Báo:", MessageBoxButtons.OK);
+                    con.Close(); txtMaHS.Enabled = false;
+
+                    loadDanhSach("SELECT *FROM HS1");
+                    // }
+                    //  else
+                    //  {
+                    //      MessageBox.Show("Invalid Values", "Notice:", MessageBoxButtons.OK);
+
+                    // }
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Lỗi update", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message);
+                    con.Close();
+
+                }
+            }
+        }
+
+        private void btnDeleteStudent_Click(object sender, EventArgs e)
         {
 
             if (MessageBox.Show("Bạn Có Chắc Chắn Muốn Xóa Không", "Chú ý", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 try
                 {
-                    txtMaHS.Enabled = false;
+                   
                     con.Open();
                     cmd = new SqlCommand("DELETE hs1 Where hs1.IDHOCSINH=@id", con);
                     cmd.Parameters.Add(new SqlParameter("@id", txtMaHS.Text));
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Xóa  Thành Công", "Thông Báo:", MessageBoxButtons.OK);
                     con.Close();
-                   
+
                     loadDanhSach("SELECT *FROM HS1");
                 }
                 catch (SqlException ex)
@@ -189,104 +257,10 @@ namespace TESTING_PROJECT
             }
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
+        private void txtSearch1_OnValueChanged(object sender, EventArgs e)
         {
-            txtMaHS.Enabled = false;
-            if(btnSua.Text=="Sửa")
-            {
-                btnSua.Text = "Save";
-
-            }
-            else if(btnSua.Text=="Save")
-            {
-                btnSua.Text = "Sửa";
-                try
-                {
-                   // if (checkMaHs(txtMaHS.Text) && checkTenHoHs(txtHoLot.Text) && checkTenHs(txtTen.Text))
-                    //{
-                        con.Open();
-                        cmd = new SqlCommand(" Update HS1 Set HOLOT = @HO, TENHS = @TEN,MALOP=@MALOP Where IDHOCSINH =@maHS", con);
-                        cmd.Parameters.Add(new SqlParameter("@id", txtMaHS.Text));
-
-                        cmd.Parameters.Add(new SqlParameter("@HO", txtHoLot.Text));
-                        cmd.Parameters.Add(new SqlParameter("@TEN", txtTen.Text));
-                        cmd.Parameters.Add(new SqlParameter("@MALOP", comboBoxLop.Text));
-                        cmd.Parameters.Add(new SqlParameter("@maHS", txtMaHS.Text));
-
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("update  Thành Công", "Thông Báo:", MessageBoxButtons.OK);
-                        con.Close(); txtMaHS.Enabled = false;
-
-                        loadDanhSach("SELECT *FROM HS1");
-                   // }
-                  //  else
-                  //  {
-                  //      MessageBox.Show("Invalid Values", "Notice:", MessageBoxButtons.OK);
-
-                   // }
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("Lỗi update", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    MessageBox.Show(ex.Message);
-                    con.Close();
-
-                }
-            }
-         
-        }
-
-        private void btnSearchStudent_Click(object sender, EventArgs e)
-        {
-            if(txtSearch.text=="")
-            {
-                loadDanhSach("SELECT *FROM HS1");
-            }
-            else
-            {
-                con.Open();
-                cmd = new SqlCommand("SELECT *FROM HS1 WHERE TENHS =@TEN", con);
-                cmd.Parameters.Add(new SqlParameter("@TEN", txtSearch.text));
-               
-              //  sda.Fill(dt);
-                //dataGridViewDanhSach.DataSource = dt;
-                SqlCommandBuilder sqlBuilder = new SqlCommandBuilder();
-                sda = new SqlDataAdapter(cmd);
-                ds = new DataSet();
-                sda.Fill(ds);
-                dt = ds.Tables[0];
-                dataGridViewDanhSach.DataSource = dt;
-           //     sqlBuilder.DataAdapter = adp;
-                con.Close();
-
-            }
-
-        }
-
-        private void txtSearch_OnTextChange(object sender, EventArgs e)
-        {
-            if (txtSearch.Text == " ")
-            {
-                loadDanhSach("SELECT *FROM HS1");
-            }
-            else
-            {
-                con.Open();
-                cmd = new SqlCommand("SELECT *FROM HS1 WHERE TENHS like @TEN", con);
-                cmd.Parameters.Add(new SqlParameter("@TEN", txtSearch.text));
-
-                //  sda.Fill(dt);
-                //dataGridViewDanhSach.DataSource = dt;
-                SqlCommandBuilder sqlBuilder = new SqlCommandBuilder();
-                sda = new SqlDataAdapter(cmd);
-                ds = new DataSet();
-                sda.Fill(ds);
-                dt = ds.Tables[0];
-                dataGridViewDanhSach.DataSource = dt;
-                //     sqlBuilder.DataAdapter = adp;
-                con.Close();
-            }
-
+            
+                dataGridViewDanhSach.DataSource = XemDL("SELECT * FROM HS1 WHERE TENHS LIKE N'%" + txtSearch1.Text.Trim() + "%' ");
         }
     }
 }

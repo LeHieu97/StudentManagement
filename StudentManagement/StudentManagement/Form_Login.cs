@@ -51,7 +51,6 @@ namespace StudentManagement
                 clearTxt(i);
             }
         }
-        public IButtonControl AcceptButton { get; set; }
 
         private void btnLogin_Click_1(object sender, EventArgs e)
         {

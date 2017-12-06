@@ -51,9 +51,6 @@ D:\STUDY\Testing\Project\studentmanagement\StudentManagement\StudentManagement\o
 D:\STUDY\Testing\Project\studentmanagement\StudentManagement\StudentManagement\obj\Debug\StudentManagement.Form_Login.resources
 D:\STUDY\Testing\Project\studentmanagement\StudentManagement\StudentManagement\obj\Debug\StudentManagement.Form_Menu.resources
 D:\STUDY\Testing\Project\studentmanagement\StudentManagement\StudentManagement\obj\Debug\StudentManagement.Properties.Resources.resources
-D:\STUDY\Testing\Project\studentmanagement\StudentManagement\StudentManagement\obj\Debug\StudentManagement.US_Class.resources
-D:\STUDY\Testing\Project\studentmanagement\StudentManagement\StudentManagement\obj\Debug\StudentManagement.US_NienKhoa.resources
-D:\STUDY\Testing\Project\studentmanagement\StudentManagement\StudentManagement\obj\Debug\StudentManagement.US_Student.resources
 D:\STUDY\Testing\Project\studentmanagement\StudentManagement\StudentManagement\obj\Debug\StudentManagement.csproj.GenerateResource.Cache
 D:\STUDY\Testing\Project\studentmanagement\StudentManagement\StudentManagement\obj\Debug\StudentManagement.csproj.CoreCompileInputs.cache
 D:\STUDY\Testing\Project\studentmanagement\StudentManagement\StudentManagement\obj\Debug\StudentManagement.exe
@@ -62,4 +59,3 @@ D:\STUDY\Testing\Project\studentmanagement\StudentManagement\StudentManagement\b
 D:\STUDY\Testing\Project\studentmanagement\StudentManagement\StudentManagement\bin\Debug\StudentManagement.exe
 D:\STUDY\Testing\Project\studentmanagement\StudentManagement\StudentManagement\bin\Debug\StudentManagement.pdb
 D:\STUDY\Testing\Project\studentmanagement\StudentManagement\StudentManagement\obj\Debug\TESTING_PROJECT.frmHs.resources
-D:\STUDY\Testing\Project\studentmanagement\StudentManagement\StudentManagement\obj\Debug\StudentManagement.US_Score.resources

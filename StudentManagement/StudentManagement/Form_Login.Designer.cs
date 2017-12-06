@@ -142,7 +142,7 @@
             this.txtPassword.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPassword.HintForeColor = System.Drawing.Color.Empty;
-            this.txtPassword.HintText = "";
+            this.txtPassword.HintText = "Password";
             this.txtPassword.isPassword = true;
             this.txtPassword.LineFocusedColor = System.Drawing.Color.Magenta;
             this.txtPassword.LineIdleColor = System.Drawing.Color.Gray;
@@ -153,7 +153,6 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(278, 36);
             this.txtPassword.TabIndex = 57;
-            this.txtPassword.Text = "Password";
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // txtUsername
@@ -164,7 +163,7 @@
             this.txtUsername.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtUsername.HintForeColor = System.Drawing.Color.Empty;
-            this.txtUsername.HintText = "";
+            this.txtUsername.HintText = "Username";
             this.txtUsername.isPassword = false;
             this.txtUsername.LineFocusedColor = System.Drawing.Color.Magenta;
             this.txtUsername.LineIdleColor = System.Drawing.Color.Gray;
@@ -175,7 +174,6 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(278, 36);
             this.txtUsername.TabIndex = 56;
-            this.txtUsername.Text = "Username";
             this.txtUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // btnExit
@@ -310,7 +308,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form_Login";
+            this.Text = "Student Management";
             this.Load += new System.EventHandler(this.Form_Login_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_Login_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_Login_MouseMove);

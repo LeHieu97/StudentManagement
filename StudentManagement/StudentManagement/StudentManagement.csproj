@@ -72,33 +72,8 @@
     <Compile Include="frmHs.designer.cs">
       <DependentUpon>frmHs.cs</DependentUpon>
     </Compile>
-    <Compile Include="KetnoiDatabase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="US_Class.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="US_Class.Designer.cs">
-      <DependentUpon>US_Class.cs</DependentUpon>
-    </Compile>
-    <Compile Include="US_NienKhoa.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="US_NienKhoa.Designer.cs">
-      <DependentUpon>US_NienKhoa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="US_Score.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="US_Score.designer.cs">
-      <DependentUpon>US_Score.cs</DependentUpon>
-    </Compile>
-    <Compile Include="US_Student.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="US_Student.designer.cs">
-      <DependentUpon>US_Student.cs</DependentUpon>
-    </Compile>
     <Compile Include="_D__studentmanagement_quanlyhocsinh_mdfDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -125,18 +100,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="US_Class.resx">
-      <DependentUpon>US_Class.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="US_NienKhoa.resx">
-      <DependentUpon>US_NienKhoa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="US_Score.resx">
-      <DependentUpon>US_Score.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="US_Student.resx">
-      <DependentUpon>US_Student.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
